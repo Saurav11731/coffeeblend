@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use App\Models\Product\Product;
 
 class HomeController extends BaseController
 {
@@ -28,6 +29,7 @@ class HomeController extends BaseController
      */
     public function index()
     {
-        return view('home');
+        $products=Product::select()->orderBy('id','desc')->take(4)->get();
+        return view('home',compact('products'));
     }
 }
