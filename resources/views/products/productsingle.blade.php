@@ -17,7 +17,10 @@
   </div>
 </div>
 </section>
+@if(Session::has('success'))
+{{Session::get('success')}}
 
+@endif
 <section class="ftco-section">
   <div class="container">
       <div class="row">
@@ -59,7 +62,14 @@
                </span>
             </div>
         </div>
-        <p><a href="cart.html" class="btn btn-primary py-3 px-5">Add to Cart</a></p>
+        <form method="POST" action="{{ route('add.cart', $product->id) }}">
+          @csrf
+          <input type="text" name="pro_id" value="{{ $product->id }}">
+          <input type="text" name="name" value="{{ $product->name }}">
+          <input type="text" name="price" value="{{ $product->price }}">
+          <input type="text" name="image" value="{{ $product->image }}">
+        </form>
+        <button type="submit" name="submit" class="btn btn-primary py-3 px-5">Add to Cart</button>
           </div>
       </div>
   </div>
@@ -76,20 +86,21 @@
   </div>
   <div class="row">';
 
-  $foreach($relatedProducts as $relatedProduct)
+ 
+  @foreach($relatedProducts as $relatedProduct)
       <div class="col-md-3">
           <div class="menu-entry">
-                  <a href="" class="img" style="background-image: url({{asset('assets/images/'.$product->image.'')}});"></a>
+                  <a href="{{ route('product.single', $relatedProduct->id) }}" class="img" style="background-image: url({{asset('assets/images/'.$relatedProduct->image.'')}});"></a>
                   <div class="text text-center pt-4">
-                      <h3><a href="">{{$product->name}}</a></h3>
-                      <p>{{$product->description}}</p>
-                      <p class="price"><span>${{$product->price}}</span></p>
-                      <p><a href="" class="btn btn-primary btn-outline-primary">Show</a></p>
+                      <h3><a href="{{ route('product.single', $relatedProduct->id) }}">{{$relatedProduct->name}}</a></h3>
+                      <p>{{$relatedProduct->description}}</p>
+                      <p class="price"><span>${{$relatedProduct->price}}</span></p>
+                      <p><a href="{{ route('product.single', $relatedProduct->id) }}" class="btn btn-primary btn-outline-primary">Show</a></p>
 
                   </div>
               </div>
       </div>
-    $endforeach
+    @endforeach
   </div>
   </div>
 </section>
