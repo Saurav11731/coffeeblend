@@ -65,11 +65,11 @@
         <form method="POST" action="{{ route('add.cart', $product->id) }}">
           @csrf
           <input type="text" name="pro_id" value="{{ $product->id }}">
-          <input type="text" name="name" value="{{ $product->name }}">
+          <input type="text" name="name" value="{{ $product->name }}"><br>
           <input type="text" name="price" value="{{ $product->price }}">
           <input type="text" name="image" value="{{ $product->image }}">
+        <p><button type="submit" name="submit" class="btn btn-primary py-3 px-5">Add to Cart</button></p>
         </form>
-        <button type="submit" name="submit" class="btn btn-primary py-3 px-5">Add to Cart</button>
           </div>
       </div>
   </div>
