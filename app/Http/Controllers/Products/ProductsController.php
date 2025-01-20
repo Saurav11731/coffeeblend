@@ -10,6 +10,7 @@ use App\Models\Product\Cart;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Product\Order;
+use App\Models\Product\Booking;
 
 class ProductsController extends Controller
 {
@@ -84,11 +85,11 @@ class ProductsController extends Controller
         // return Redirect::route('products.pay');
         }
     }
-    // public function payWithPaypal()
-    // {
-    //    return view('products.pay'); 
-    //     // return Redirect::route('products.pay');
-    // }
+    public function payWithPaypal()
+    {
+            return view('products.pay'); 
+          //return Redirect::route('products.pay');
+    }
     public function success()
     {
         $deleteItems = Cart::where('user_id', Auth::user()->id);
@@ -99,5 +100,23 @@ class ProductsController extends Controller
         }
         
     }
+    public function BookTables(Request $request)
+    {
+        if($request->date > date('n/j/Y')) {
+            
+            $bookTables = Booking::create(
+                $request->all()
+            );
+            if ($bookTables) {
+                return Redirect::route('home')->with('booking','Booking successful');
+           
+            }
+        }else{
+                return Redirect::route('home')->with('date','Invalide data,Please select a valid date');
+            }
+
+        }
+       
+    }
     
-}
+

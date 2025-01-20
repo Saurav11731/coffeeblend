@@ -94,13 +94,13 @@
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<input name="price" type="text" value="{{ Session::get('price') }}"  class="form-control" placeholder="">
+								<input name="price" type="hidden" value="{{ Session::get('price') }}"  class="form-control" placeholder="">
 							</div>	
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 							@if(Auth::check())
-								<input name="user_id" type="text" value="{{ Auth::user()->id }}"  class="form-control" placeholder="">
+								<input name="user_id" type="hidden" value="{{ Auth::user()->id }}"  class="form-control" placeholder="">
 								@else <input name="user_id" type="text" value="" class="form-control" placeholder=""> 
 								@endif
 							</div>

@@ -21,6 +21,7 @@
 @if(Session::has('delete'))
 <p class="alert {{Session::get('alert-class','alert-info')}}">{{Session::get('delete')}}</p>
 @endif
+</div>
 		<section class="ftco-section ftco-cart">
 			<div class="container">
 				<div class="row">
