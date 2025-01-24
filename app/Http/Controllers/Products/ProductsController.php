@@ -124,7 +124,15 @@ class ProductsController extends Controller
             }
 
         }
+        public function menu()
+    {
+       $menu = Product::select()->get();
        
+            return view('products.success');
+        }
+        
     }
+       
+    
     
 
