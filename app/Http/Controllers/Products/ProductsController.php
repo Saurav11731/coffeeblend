@@ -17,6 +17,9 @@ class ProductsController extends Controller
     public function singleProduct($id)
     {
         $product = Product::find($id);
+        if (!$product) {
+            return redirect()->route('menu')->with('error', 'Product not found.');
+        }
         $relatedProducts = Product::where('type', $product->type)->where('id', '!=', $id)
             ->take('4')->orderBy('id', 'desc')->get();
 
@@ -126,9 +129,10 @@ class ProductsController extends Controller
         }
         public function menu()
     {
-       $menu = Product::select()->get();
+       $desserts = Product::select()->where("type","desserts")->orderBy('id','desc')->take(4)->get();
+       $drinks = Product::select()->where("type","drinks")->orderBy('id','desc')->take(4)->get();
        
-            return view('products.success');
+            return view('products.menu' , compact('desserts','drinks'));
         }
         
     }
