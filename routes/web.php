@@ -33,3 +33,10 @@ Route::get('products/success', [App\Http\Controllers\Products\ProductsController
 Route::post('products/booking', [App\Http\Controllers\Products\ProductsController::class, 'BookTables'])->name('booking.tables');
 //menu
 Route::get('products/menu', [App\Http\Controllers\Products\ProductsController::class, 'menu'])->name('products.menu');
+
+//users pages
+Route::get('users/orders', [App\Http\Controllers\Users\UsersController::class, 'displayOrders'])->name('users.orders');
+Route::get('users/bookings', [App\Http\Controllers\Users\UsersController::class, 'displayBookings'])->name('users.bookings');
+//write review
+Route::get('users/write-reviews', [App\Http\Controllers\Users\UsersController::class, 'writeReview'])->name('write.reviews');
+Route::post('users/write-reviews', [App\Http\Controllers\Users\UsersController::class, 'processWriteReview'])->name('process.write.review');

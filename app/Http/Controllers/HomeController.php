@@ -7,6 +7,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Models\Product\Product;
+use App\Models\Product\Review;
 
 class HomeController extends BaseController
 {
@@ -30,6 +31,7 @@ class HomeController extends BaseController
     public function index()
     {
         $products=Product::select()->orderBy('id','desc')->take(4)->get();
-        return view('home',compact('products'));
+        $reviews=Review::select()->orderBy('id','desc')->take(4)->get();
+        return view('home',compact('products', 'reviews'));
     }
 }
