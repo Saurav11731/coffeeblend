@@ -22,11 +22,16 @@ class ProductsController extends Controller
         }
         $relatedProducts = Product::where('type', $product->type)->where('id', '!=', $id)
             ->take('4')->orderBy('id', 'desc')->get();
+            
+        if(isset(Auth::user()->id)){
 
         //Checking for products in cart
         $checkingInCart = Cart::where('pro_id', $id)->where('user_id', Auth::user()->id)->count();
 
         return view('products.productsingle', compact('product', 'relatedProducts', 'checkingInCart'));
+    }else{
+        return redirect()->route('login')->with('message', 'Please log in to view product details.');
+    }
     }
 
     public function addCart(Request $request, $id)
