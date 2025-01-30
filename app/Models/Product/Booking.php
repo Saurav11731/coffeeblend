@@ -9,7 +9,7 @@ class Booking extends Model
 {
     use HasFactory;
     protected $table = 'bookings';
-    protected $fillable = ['first_name','last_name','date', 'time','phone', 'message', 'user_id'];
+    protected $fillable = ['first_name','last_name','date', 'time','phone', 'message', 'user_id','status'];
     public $timestamps = true;
     protected $hidden = ['created_at', 'updated_at'];
 }

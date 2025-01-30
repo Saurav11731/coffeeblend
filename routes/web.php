@@ -31,8 +31,8 @@ Route::get('/checkout', [App\Http\Controllers\Products\ProductsController::class
 
 Route::post('/checkout', [App\Http\Controllers\Products\ProductsController::class, 'storeCheckout'])->name('process.checkout');
 //pay and success
-//Route::get('products/pay', [App\Http\Controllers\Products\ProductsController::class, 'payWithPaypal'])->name('products.pay')->Middleware('check.for.price');
-
+Route::get('products/pay', [App\Http\Controllers\Products\ProductsController::class, 'payWithPaypal'])->name('products.pay');
+// ->Middleware('check.for.price')
 Route::get('/success', [App\Http\Controllers\Products\ProductsController::class, 'success'])->name('products.pay.success');
 // ->Middleware('check.for.price')
 //booking
@@ -58,4 +58,24 @@ Route::get('/index', [App\Http\Controllers\Admins\AdminsController::class, 'inde
 Route::get('/all-admins', [App\Http\Controllers\Admins\AdminsController::class, 'displayAllAdmins'])->name('all.admins');
 Route::get('/create-admins', [App\Http\Controllers\Admins\AdminsController::class, 'createAdmins'])->name('create.admins');
 Route::post('/create-admins', [App\Http\Controllers\Admins\AdminsController::class, 'storeAdmins'])->name('store.admins');
+
+//orders
+Route::get('all-orders', [App\Http\Controllers\Admins\AdminsController::class, 'displayAllOrders'])->name('all.orders');
+Route::get('edit-order/{id}', [App\Http\Controllers\Admins\AdminsController::class, 'editOrders'])->name('edit.order');
+Route::post('edit-order/{id}', [App\Http\Controllers\Admins\AdminsController::class, 'updateOrders'])->name('update.order');
+Route::get('delete-order/{id}', [App\Http\Controllers\Admins\AdminsController::class, 'deleteOrders'])->name('delete.order');
+
+//products
+Route::get('all-products', [App\Http\Controllers\Admins\AdminsController::class, 'displayProducts'])->name('all.products');
+Route::get('create-product', [App\Http\Controllers\Admins\AdminsController::class, 'createProducts'])->name('create.products');
+Route::post('create-product', [App\Http\Controllers\Admins\AdminsController::class, 'storeProducts'])->name('store.products');
+Route::get('delete-product/{id}', [App\Http\Controllers\Admins\AdminsController::class, 'deleteProducts'])->name('delete.products');
+
+//bookings
+Route::get('all-bookings', [App\Http\Controllers\Admins\AdminsController::class, 'displayBookings'])->name('all.bookings');
+
+Route::get('delete-booking/{id}', [App\Http\Controllers\Admins\AdminsController::class, 'deleteBooking'])->name('delete.booking');
+Route::get('edit-booking/{id}', [App\Http\Controllers\Admins\AdminsController::class, 'editBooking'])->name('edit.booking');
+Route::post('edit-booking/{id}', [App\Http\Controllers\Admins\AdminsController::class, 'updateBooking'])->name('update.booking');
+
 });
