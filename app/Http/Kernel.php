@@ -36,7 +36,8 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $middlewareAliases = [
-       // 'auth' => \App\Http\Middleware\Authenticate::class,
+       //'auth' => \App\Http\Middleware\Authenticate::class,
+       'check.for.auth' => \App\Http\Middleware\CheckForAuth::class,
         'check.for.price' => \App\Http\Middleware\CheckForPrice::class,
         //'check.for.price.admin' => \App\Http\Middleware\CheckForPriceAdmin::class,
         // Add other middleware aliases here

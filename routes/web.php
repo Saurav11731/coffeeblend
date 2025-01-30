@@ -48,3 +48,14 @@ Route::get('/bookings', [App\Http\Controllers\Users\UsersController::class, 'dis
 Route::get('/write-reviews', [App\Http\Controllers\Users\UsersController::class, 'writeReview'])->name('write.reviews')->middleware('auth:web');
 Route::post('/write-reviews', [App\Http\Controllers\Users\UsersController::class, 'processWriteReview'])->name('process.write.review')->middleware('auth:web');
 });
+
+Route::get('admin/login', [App\Http\Controllers\Admins\AdminsController::class, 'viewLogin'])->name('view.login');
+// ->Middleware('check.for.auth')
+Route::post('admin/login', [App\Http\Controllers\Admins\AdminsController::class, 'checkLogin'])->name('check.login');
+Route::group(['prefix' => 'admin' , 'middleware' => 'auth:admin'], function () {
+Route::get('/index', [App\Http\Controllers\Admins\AdminsController::class, 'index'])->name('admin.dashboard');
+//admin section
+Route::get('/all-admins', [App\Http\Controllers\Admins\AdminsController::class, 'displayAllAdmins'])->name('all.admins');
+Route::get('/create-admins', [App\Http\Controllers\Admins\AdminsController::class, 'createAdmins'])->name('create.admins');
+Route::post('/create-admins', [App\Http\Controllers\Admins\AdminsController::class, 'storeAdmins'])->name('store.admins');
+});

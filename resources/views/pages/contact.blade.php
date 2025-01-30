@@ -27,10 +27,10 @@
             <h2 class="h4">Contact Information</h2>
           </div>
           <div class="col-md-12 mb-3">
-            <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
+            <p><span>Address:</span> Sant Nagar, Dayalbagh, Agra-282005</p>
           </div>
           <div class="col-md-12 mb-3">
-            <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+            <p><span>Phone:</span> <a href="tel://1234567920">+91 8218715605</a></p>
           </div>
           <div class="col-md-12 mb-3">
             <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
